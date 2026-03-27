@@ -3,6 +3,13 @@ from langchain_core.runnables import RunnableSequence
 from langchain_core.prompts import PromptTemplate
 from src.utils import logger, get_env_variable
 
+import asyncio
+
+try:
+    asyncio.get_running_loop()
+except RuntimeError:
+    asyncio.set_event_loop(asyncio.new_event_loop())
+    
 class ChatbotManager:
     """Manages the Chatbot logic using Google Gemini RAG."""
     
