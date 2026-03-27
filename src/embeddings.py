@@ -1,13 +1,11 @@
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from src.utils import logger
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
 
 class EmbeddingManager:
-    """Manages the generation of text embeddings."""
-    
-    def __init__(self, model_name: str = "all-MiniLM-L6-v2"):
-        logger.info(f"Initializing EmbeddingManager with model: {model_name}")
-        self.embeddings = HuggingFaceEmbeddings(model_name=model_name)
+    def __init__(self):
+        self.embeddings = GoogleGenerativeAIEmbeddings(
+            model="models/embedding-001"
+        )
 
     def get_embeddings(self):
-        """Returns the embeddings object."""
         return self.embeddings
