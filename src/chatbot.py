@@ -1,4 +1,5 @@
-from langchain_google_genai import ChatGoogleGenerativeAI
+import google.generativeai as genai
+import os
 from langchain_core.runnables import RunnableSequence
 from langchain_core.prompts import PromptTemplate
 from src.utils import logger, get_env_variable
