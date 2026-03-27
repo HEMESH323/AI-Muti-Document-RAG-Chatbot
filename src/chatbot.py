@@ -56,8 +56,5 @@ def ask(self, query: str):
 
     response = self.model.generate_content(prompt)
 
-    return {
-        "answer": response.text,
-        "source_documents": docs
-    }
+    return response.text, docs
 
