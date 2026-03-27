@@ -1,18 +1,15 @@
 streamlit>=1.31.0
 
-# PDF + utils
 pypdf>=4.0.0
 
-# Embeddings (lighter alternative)
+# REQUIRED for HuggingFaceEmbeddings
 sentence-transformers==2.2.2
+torch==2.2.2
 
-# Vector DB
 faiss-cpu==1.7.4
 
-# LangChain (compatible versions)
 langchain==0.1.20
 langchain-community==0.0.38
 langchain-core==0.1.52
 
-# Gemini (IMPORTANT - stable version)
 google-generativeai==0.8.3
