@@ -1,5 +1,5 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.chains import ConversationalRetrievalChain
+from langchain_core.runnables import RunnableSequence
 from langchain.prompts import PromptTemplate
 from src.utils import logger, get_env_variable
 
