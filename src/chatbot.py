@@ -20,16 +20,6 @@ class ChatbotManager:
         self.retriever = retriever
         self.memory = memory
         logger.info("Initializing ChatbotManager with Gemini...")
-        
-        self.llm = ChatGoogleGenerativeAI(
-            model="gemini-flash-latest",
-            google_api_key=api_key,
-            temperature=0.3
-        )
-        
-        self.memory = memory
-        self.retriever = retriever
-        
         # System prompt template
         self.template = """
         You are an intelligent assistant. Answer strictly using the provided context. 
