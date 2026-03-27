@@ -1,9 +1,10 @@
 streamlit>=1.31.0
-langchain>=0.1.0
 langchain-google-genai>=0.0.8
 faiss-cpu>=1.7.4
 sentence-transformers>=2.3.0
 pypdf>=4.0.0
 python-dotenv>=1.0.0
-langchain-community>=0.0.10
 torchvision
+langchain==0.1.20
+langchain-community==0.0.38
+langchain-core==0.1.52
