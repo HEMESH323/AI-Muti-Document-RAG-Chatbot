@@ -38,23 +38,23 @@ class ChatbotManager:
         
 
 
-def ask(self, query: str):
-    docs = self.retriever.get_relevant_documents(query)
-
-    context = "\n".join([doc.page_content for doc in docs])
-
-    prompt = f"""
-    You are an intelligent assistant. Answer strictly using the provided context.
-    If the answer is not found, say "I don't know".
-
-    Context:
-    {context}
-
-    Question:
-    {query}
-    """
-
-    response = self.model.generate_content(prompt)
-
-    return response.text, docs
-
+    def ask(self, query: str):
+        docs = self.retriever.get_relevant_documents(query)
+    
+        context = "\n".join([doc.page_content for doc in docs])
+    
+        prompt = f"""
+        You are an intelligent assistant. Answer strictly using the provided context.
+        If the answer is not found, say "I don't know".
+    
+        Context:
+        {context}
+    
+        Question:
+        {query}
+        """
+    
+        response = self.model.generate_content(prompt)
+    
+        return response.text, docs
+    
