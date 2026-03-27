@@ -6,7 +6,7 @@ class ChatbotManager:
     """Manages the Chatbot logic using Google Gemini RAG."""
 
     def __init__(self, retriever, memory):
-        self.model = genai.GenerativeModel("models/gemini-1.5-flash")
+        self.model = genai.GenerativeModel("models/gemini-pro")
         self.retriever = retriever
         self.memory = memory
 
