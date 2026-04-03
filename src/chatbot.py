@@ -25,7 +25,7 @@ class ChatbotManager:
 
         response = self.client.models.generate_content(
             model="gemini-1.5-flash",
-            contents=prompt
+            contents=[{"role": "user", "parts": [prompt]}]   # ✅ FIXED
         )
 
         return response.text, docs
