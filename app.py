@@ -12,8 +12,9 @@ from src.chatbot import ChatbotManager
 from src.memory import MemoryManager
 from src.utils import logger
 
-# ✅ Configure Gemini API (ONLY ONCE - FIXED)
+import pkg_resources
 
+st.write([pkg.key for pkg in pkg_resources.working_set if "google" in pkg.key])
 
 # Page configuration
 st.set_page_config(
