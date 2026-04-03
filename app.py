@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 import tempfile
-import google.generativeai as genai
+from google import genai
 
 from src.document_loader import PDFLoader
 from src.text_splitter import TextSplitter
@@ -13,7 +13,7 @@ from src.memory import MemoryManager
 from src.utils import logger
 
 # ✅ Configure Gemini API (ONLY ONCE - FIXED)
-genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
+
 
 # Page configuration
 st.set_page_config(
