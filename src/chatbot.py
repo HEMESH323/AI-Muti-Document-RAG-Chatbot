@@ -1,49 +1,31 @@
-import google.generativeai as genai
-from src.utils import logger
-
+from google import genai
+import os
 
 class ChatbotManager:
-    """Manages the Chatbot logic using Google Gemini RAG."""
-
     def __init__(self, retriever, memory):
-        self.model = genai.GenerativeModel("models/gemini-flash-latest")
+        self.client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
         self.retriever = retriever
         self.memory = memory
 
-        logger.info("✅ ChatbotManager initialized with Gemini")
-
     def ask(self, query: str):
-        try:
-            # Handle missing retriever (for safety)
-            if self.retriever:
-                docs = self.retriever.get_relevant_documents(query)
-                context = "\n".join([doc.page_content for doc in docs])
-            else:
-                docs = []
-                context = "No context available."
+        docs = self.retriever.get_relevant_documents(query)
 
-            prompt = f"""
-You are an intelligent assistant. Answer strictly using the provided context.
-If the answer is not found, say "I don't know".
+        context = "\n".join([doc.page_content for doc in docs])
 
-Context:
-{context}
+        prompt = f"""
+        You are an intelligent assistant. Answer strictly using the provided context.
+        If the answer is not found, say "I don't know".
 
-Question:
-{query}
+        Context:
+        {context}
 
-Answer:
-"""
+        Question:
+        {query}
+        """
 
-            response = self.model.generate_content(prompt)
+        response = self.client.models.generate_content(
+            model="gemini-1.5-flash",
+            contents=prompt
+        )
 
-            # Safe response handling
-            if not response or not response.text:
-                return "No response from model.", docs
-
-            return response.text, docs
-
-        except Exception as e:
-            logger.error(f"Error in ask(): {str(e)}")
-            return f"Error: {str(e)}", []
-    
+        return response.text, docs
