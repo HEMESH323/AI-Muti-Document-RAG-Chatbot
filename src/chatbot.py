@@ -8,7 +8,7 @@ class ChatbotManager:
         self.memory = memory
 
     def ask(self, query: str):
-        docs = self.retriever.get_relevant_documents(query)
+        docs = self.retriever.invoke(query)
 
         context = "\n".join([doc.page_content for doc in docs])
 
