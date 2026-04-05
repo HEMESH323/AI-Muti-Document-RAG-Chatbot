@@ -24,7 +24,7 @@ class ChatbotManager:
         """
 
         response = self.client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="Gemini 3.1 Flash",
             contents=prompt   # ✅ CORRECT
         )
 
